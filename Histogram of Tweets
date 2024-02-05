@@ -1,0 +1,9 @@
+SELECT count_tweet,
+  count(user_id) as users_num
+FROM (
+      SELECT count(tweet_id) count_tweet,
+        user_id
+      FROM tweets
+      WHERE tweet_date between '2022-01-01' and '2022-12-31'
+      GROUP BY user_id ) AS tweet_count
+GROUP BY count_tweet
